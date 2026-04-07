@@ -35,5 +35,21 @@ namespace DE
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order3> Order3 { get; set; }
+
+        public decimal DiscountPrice
+        {
+            get
+            {
+                if (Discount > 0)
+                    return Price - (Price * Discount / 100);
+                return Price; // если скидки нет, возвращаем обычную цену
+            }
+        }
+
+        // свойство для отображения обычной цены
+        public decimal RegularPrice
+        {
+            get { return Price; }
+        }
     }
 }

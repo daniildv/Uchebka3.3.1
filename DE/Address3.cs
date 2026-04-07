@@ -28,5 +28,34 @@ namespace DE
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order3> Order3 { get; set; }
+
+        public string FullAddress
+        {
+            get
+            {
+                return $"{PostalCode}, {City}, ул. {Street}, дом. {House}";
+            }
+        }
+
+        public string ShortAddress
+        {
+            get
+            {
+                return $"{City}, ул. {Street}, дом. {House}";
+            }
+        }
+
+        public string AddressLine
+        {
+            get
+            {
+                return $"{City} {Street} {House}";
+            }
+        }
+
+        public override string ToString()
+        {
+            return FullAddress;
+        }
     }
 }
