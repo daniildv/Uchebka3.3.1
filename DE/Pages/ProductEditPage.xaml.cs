@@ -12,7 +12,7 @@ namespace DE.Pages
 {
     public partial class ProductEditPage : Page
     {
-        private Product2 currentProduct;
+        private Product3 currentProduct;
         private bool isNewProduct;
         private string currentPhotoFullPath;
         private static bool isEditWindowOpen = false;
@@ -26,7 +26,7 @@ namespace DE.Pages
 
         public ProductEditPage() : this(null) { }
 
-        public ProductEditPage(Product2 product)
+        public ProductEditPage(Product3 product)
         {
             try
             {
@@ -91,9 +91,9 @@ namespace DE.Pages
                 {
                     int maxId = 0;
 
-                    if (db.Product2.Any())
+                    if (db.Product3.Any())
                     {
-                        maxId = db.Product2.Max(p => p.ID_Product);
+                        maxId = db.Product3.Max(p => p.ID_Product);
                     }
 
                     int nextId = maxId + 1;
@@ -132,7 +132,7 @@ namespace DE.Pages
 
                 using (var db = new user33Entities())
                 {
-                    var existingIds = db.Product2.Select(p => p.ID_Product).ToHashSet();
+                    var existingIds = db.Product3.Select(p => p.ID_Product).ToHashSet();
 
                     if (!isNewProduct && currentProduct != null && currentProduct.ID_Product > 0)
                     {
@@ -224,7 +224,7 @@ namespace DE.Pages
             {
                 using (var db = new user33Entities())
                 {
-                    var categories = db.Product2
+                    var categories = db.Product3
                         .Select(p => p.Category)
                         .Where(c => c != null && c.Trim() != "")
                         .Distinct()
@@ -237,7 +237,7 @@ namespace DE.Pages
                         CategoryComboBox.Items.Add(category);
                     }
 
-                    var manufacturers = db.Product2
+                    var manufacturers = db.Product3
                         .Select(p => p.Manufacturer)
                         .Where(m => m != null && m.Trim() != "")
                         .Distinct()
@@ -250,7 +250,7 @@ namespace DE.Pages
                         ManufacturerComboBox.Items.Add(manufacturer);
                     }
 
-                    var suppliers = db.Product2
+                    var suppliers = db.Product3
                         .Select(p => p.Supplier)
                         .Where(s => s != null && s.Trim() != "")
                         .Distinct()
@@ -263,7 +263,7 @@ namespace DE.Pages
                         SupplierComboBox.Items.Add(supplier);
                     }
 
-                    var units = db.Product2
+                    var units = db.Product3
                         .Select(p => p.Unit)
                         .Where(u => u != null && u.Trim() != "")
                         .Distinct()
@@ -773,7 +773,7 @@ namespace DE.Pages
                     if (isNewProduct)
                     {
                         int newId = int.Parse(IdTextBox.Text);
-                        if (db.Product2.Any(p => p.ID_Product == newId))
+                        if (db.Product3.Any(p => p.ID_Product == newId))
                         {
                             ShowErrorMessage("Ошибка",
                                 $"Товар с ID {newId} уже существует. Генерируем следующий свободный ID...");
@@ -781,13 +781,13 @@ namespace DE.Pages
                             return;
                         }
 
-                        currentProduct = new Product2();
+                        currentProduct = new Product3();
                         currentProduct.ID_Product = newId;
-                        db.Product2.Add(currentProduct);
+                        db.Product3.Add(currentProduct);
                     }
                     else
                     {
-                        currentProduct = db.Product2.Find(currentProduct.ID_Product);
+                        currentProduct = db.Product3.Find(currentProduct.ID_Product);
                     }
 
                     if (currentProduct == null)

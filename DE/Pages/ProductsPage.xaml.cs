@@ -13,7 +13,7 @@ namespace DE.Pages
 {
     public partial class ProductsPage : Page
     {
-        private List<Product2> allProducts;
+        private List<Product3> allProducts;
         private string currentSearch = "";
         private string currentSupplierFilter = "Все поставщики";
         private string currentSort = "none";
@@ -63,7 +63,7 @@ namespace DE.Pages
         {
             public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
             {
-                if (value is User2 user && user != null)
+                if (value is User3 user && user != null)
                 {
                     // Показываем только для администратора и менеджера
                     return (user.UserRole == "Администратор" || user.UserRole == "Менеджер")
@@ -126,7 +126,7 @@ namespace DE.Pages
             {
                 using (var db = new user33Entities())
                 {
-                    allProducts = db.Product2.ToList();
+                    allProducts = db.Product3.ToList();
 
                     Debug.WriteLine($"Загружено товаров: {allProducts.Count}");
 
@@ -146,7 +146,7 @@ namespace DE.Pages
             {
                 using (var db = new user33Entities())
                 {
-                    var suppliers = db.Product2
+                    var suppliers = db.Product3
                         .Select(p => p.Supplier)
                         .Where(s => s != null && s.Trim() != "")
                         .Distinct()
@@ -345,7 +345,7 @@ namespace DE.Pages
                     return;
                 }
 
-                var product = button.CommandParameter as Product2;
+                var product = button.CommandParameter as Product3;
                 if (product == null)
                 {
                     System.Diagnostics.Debug.WriteLine("product is null");
@@ -421,13 +421,13 @@ namespace DE.Pages
             try
             {
                 var button = sender as Button;
-                var product = button?.CommandParameter as Product2;
+                var product = button?.CommandParameter as Product3;
 
                 if (product == null || !IsAdmin) return;
 
                 using (var db = new user33Entities())
                 {
-                    bool hasOrders = db.Order2.Any(o => o.ID_Product == product.ID_Product);
+                    bool hasOrders = db.Order3.Any(o => o.ID_Product == product.ID_Product);
 
                     if (hasOrders)
                     {
@@ -459,8 +459,8 @@ namespace DE.Pages
                             }
                         }
 
-                        db.Product2.Attach(product);
-                        db.Product2.Remove(product);
+                        db.Product3.Attach(product);
+                        db.Product3.Remove(product);
                         db.SaveChanges();
 
                         ShowInfoMessage("Успешно", "Товар успешно удален");
@@ -476,7 +476,7 @@ namespace DE.Pages
             }
         }
 
-        private void OpenEditPage(Product2 product)
+        private void OpenEditPage(Product3 product)
         {
             try
             {
@@ -534,7 +534,7 @@ namespace DE.Pages
             }
         }
 
-        private void ShowProducttails(Product2 product)
+        private void ShowProducttails(Product3 product)
         {
             // Рассчитываем цену со скидкой
             decimal discountPrice = product.Price;

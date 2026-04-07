@@ -5,7 +5,7 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="Хранилище user33Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Address2">
+        <EntityType Name="Address3">
           <Key>
             <PropertyRef Name="ID_Address" />
           </Key>
@@ -15,7 +15,7 @@
           <Property Name="Street" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="House" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Order2">
+        <EntityType Name="Order3">
           <Key>
             <PropertyRef Name="ID_Order" />
           </Key>
@@ -30,7 +30,7 @@
           <Property Name="RecipientCode" Type="int" Nullable="false" />
           <Property Name="Status" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <EntityType Name="Product2">
+        <EntityType Name="Product3">
           <Key>
             <PropertyRef Name="ID_Product" />
           </Key>
@@ -47,13 +47,13 @@
           <Property Name="Description" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Photo" Type="nvarchar" MaxLength="255" />
         </EntityType>
-        <EntityType Name="Role2">
+        <EntityType Name="Role3">
           <Key>
             <PropertyRef Name="UserRole" />
           </Key>
           <Property Name="UserRole" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <EntityType Name="User2">
+        <EntityType Name="User3">
           <Key>
             <PropertyRef Name="ID_User" />
           </Key>
@@ -63,75 +63,75 @@
           <Property Name="Login" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Order2_Address2">
-          <End Role="Address2" Type="Self.Address2" Multiplicity="1" />
-          <End Role="Order2" Type="Self.Order2" Multiplicity="*" />
+        <Association Name="FK_Order3_Address3">
+          <End Role="Address3" Type="Self.Address3" Multiplicity="1" />
+          <End Role="Order3" Type="Self.Order3" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Address2">
+            <Principal Role="Address3">
               <PropertyRef Name="ID_Address" />
             </Principal>
-            <Dependent Role="Order2">
+            <Dependent Role="Order3">
               <PropertyRef Name="ID_Address" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order2_Product2">
-          <End Role="Product2" Type="Self.Product2" Multiplicity="1" />
-          <End Role="Order2" Type="Self.Order2" Multiplicity="*" />
+        <Association Name="FK_Order3_Product3">
+          <End Role="Product3" Type="Self.Product3" Multiplicity="1" />
+          <End Role="Order3" Type="Self.Order3" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Product2">
+            <Principal Role="Product3">
               <PropertyRef Name="ID_Product" />
             </Principal>
-            <Dependent Role="Order2">
+            <Dependent Role="Order3">
               <PropertyRef Name="ID_Product" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order2_User2">
-          <End Role="User2" Type="Self.User2" Multiplicity="0..1" />
-          <End Role="Order2" Type="Self.Order2" Multiplicity="*" />
+        <Association Name="FK_Order3_User3">
+          <End Role="User3" Type="Self.User3" Multiplicity="0..1" />
+          <End Role="Order3" Type="Self.Order3" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User2">
+            <Principal Role="User3">
               <PropertyRef Name="ID_User" />
             </Principal>
-            <Dependent Role="Order2">
+            <Dependent Role="Order3">
               <PropertyRef Name="ID_User" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_User2_Role2">
-          <End Role="Role2" Type="Self.Role2" Multiplicity="0..1" />
-          <End Role="User2" Type="Self.User2" Multiplicity="*" />
+        <Association Name="FK_User3_Role3">
+          <End Role="Role3" Type="Self.Role3" Multiplicity="0..1" />
+          <End Role="User3" Type="Self.User3" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Role2">
+            <Principal Role="Role3">
               <PropertyRef Name="UserRole" />
             </Principal>
-            <Dependent Role="User2">
+            <Dependent Role="User3">
               <PropertyRef Name="UserRole" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище user33ModelContainer">
-          <EntitySet Name="Address2" EntityType="Self.Address2" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Order2" EntityType="Self.Order2" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Product2" EntityType="Self.Product2" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Role2" EntityType="Self.Role2" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="User2" EntityType="Self.User2" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Order2_Address2" Association="Self.FK_Order2_Address2">
-            <End Role="Address2" EntitySet="Address2" />
-            <End Role="Order2" EntitySet="Order2" />
+          <EntitySet Name="Address3" EntityType="Self.Address3" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order3" EntityType="Self.Order3" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product3" EntityType="Self.Product3" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role3" EntityType="Self.Role3" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User3" EntityType="Self.User3" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Order3_Address3" Association="Self.FK_Order3_Address3">
+            <End Role="Address3" EntitySet="Address3" />
+            <End Role="Order3" EntitySet="Order3" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order2_Product2" Association="Self.FK_Order2_Product2">
-            <End Role="Product2" EntitySet="Product2" />
-            <End Role="Order2" EntitySet="Order2" />
+          <AssociationSet Name="FK_Order3_Product3" Association="Self.FK_Order3_Product3">
+            <End Role="Product3" EntitySet="Product3" />
+            <End Role="Order3" EntitySet="Order3" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order2_User2" Association="Self.FK_Order2_User2">
-            <End Role="User2" EntitySet="User2" />
-            <End Role="Order2" EntitySet="Order2" />
+          <AssociationSet Name="FK_Order3_User3" Association="Self.FK_Order3_User3">
+            <End Role="User3" EntitySet="User3" />
+            <End Role="Order3" EntitySet="Order3" />
           </AssociationSet>
-          <AssociationSet Name="FK_User2_Role2" Association="Self.FK_User2_Role2">
-            <End Role="Role2" EntitySet="Role2" />
-            <End Role="User2" EntitySet="User2" />
+          <AssociationSet Name="FK_User3_Role3" Association="Self.FK_User3_Role3">
+            <End Role="Role3" EntitySet="Role3" />
+            <End Role="User3" EntitySet="User3" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -139,7 +139,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="user33Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Address2">
+        <EntityType Name="Address3">
           <Key>
             <PropertyRef Name="ID_Address" />
           </Key>
@@ -148,9 +148,9 @@
           <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Street" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="House" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Order2" Relationship="Self.FK_Order2_Address2" FromRole="Address2" ToRole="Order2" />
+          <NavigationProperty Name="Order3" Relationship="Self.FK_Order3_Address3" FromRole="Address3" ToRole="Order3" />
         </EntityType>
-        <EntityType Name="Order2">
+        <EntityType Name="Order3">
           <Key>
             <PropertyRef Name="ID_Order" />
           </Key>
@@ -164,11 +164,11 @@
           <Property Name="ID_User" Type="Int32" />
           <Property Name="RecipientCode" Type="Int32" Nullable="false" />
           <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Address2" Relationship="Self.FK_Order2_Address2" FromRole="Order2" ToRole="Address2" />
-          <NavigationProperty Name="Product2" Relationship="Self.FK_Order2_Product2" FromRole="Order2" ToRole="Product2" />
-          <NavigationProperty Name="User2" Relationship="Self.FK_Order2_User2" FromRole="Order2" ToRole="User2" />
+          <NavigationProperty Name="Address3" Relationship="Self.FK_Order3_Address3" FromRole="Order3" ToRole="Address3" />
+          <NavigationProperty Name="Product3" Relationship="Self.FK_Order3_Product3" FromRole="Order3" ToRole="Product3" />
+          <NavigationProperty Name="User3" Relationship="Self.FK_Order3_User3" FromRole="Order3" ToRole="User3" />
         </EntityType>
-        <EntityType Name="Product2">
+        <EntityType Name="Product3">
           <Key>
             <PropertyRef Name="ID_Product" />
           </Key>
@@ -184,16 +184,16 @@
           <Property Name="Quantity" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Order2" Relationship="Self.FK_Order2_Product2" FromRole="Product2" ToRole="Order2" />
+          <NavigationProperty Name="Order3" Relationship="Self.FK_Order3_Product3" FromRole="Product3" ToRole="Order3" />
         </EntityType>
-        <EntityType Name="Role2">
+        <EntityType Name="Role3">
           <Key>
             <PropertyRef Name="UserRole" />
           </Key>
           <Property Name="UserRole" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="User2" Relationship="Self.FK_User2_Role2" FromRole="Role2" ToRole="User2" />
+          <NavigationProperty Name="User3" Relationship="Self.FK_User3_Role3" FromRole="Role3" ToRole="User3" />
         </EntityType>
-        <EntityType Name="User2">
+        <EntityType Name="User3">
           <Key>
             <PropertyRef Name="ID_User" />
           </Key>
@@ -202,78 +202,78 @@
           <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Login" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Order2" Relationship="Self.FK_Order2_User2" FromRole="User2" ToRole="Order2" />
-          <NavigationProperty Name="Role2" Relationship="Self.FK_User2_Role2" FromRole="User2" ToRole="Role2" />
+          <NavigationProperty Name="Order3" Relationship="Self.FK_Order3_User3" FromRole="User3" ToRole="Order3" />
+          <NavigationProperty Name="Role3" Relationship="Self.FK_User3_Role3" FromRole="User3" ToRole="Role3" />
         </EntityType>
-        <Association Name="FK_Order2_Address2">
-          <End Role="Address2" Type="Self.Address2" Multiplicity="1" />
-          <End Role="Order2" Type="Self.Order2" Multiplicity="*" />
+        <Association Name="FK_Order3_Address3">
+          <End Role="Address3" Type="Self.Address3" Multiplicity="1" />
+          <End Role="Order3" Type="Self.Order3" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Address2">
+            <Principal Role="Address3">
               <PropertyRef Name="ID_Address" />
             </Principal>
-            <Dependent Role="Order2">
+            <Dependent Role="Order3">
               <PropertyRef Name="ID_Address" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order2_Product2">
-          <End Role="Product2" Type="Self.Product2" Multiplicity="1" />
-          <End Role="Order2" Type="Self.Order2" Multiplicity="*" />
+        <Association Name="FK_Order3_Product3">
+          <End Role="Product3" Type="Self.Product3" Multiplicity="1" />
+          <End Role="Order3" Type="Self.Order3" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Product2">
+            <Principal Role="Product3">
               <PropertyRef Name="ID_Product" />
             </Principal>
-            <Dependent Role="Order2">
+            <Dependent Role="Order3">
               <PropertyRef Name="ID_Product" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order2_User2">
-          <End Role="User2" Type="Self.User2" Multiplicity="0..1" />
-          <End Role="Order2" Type="Self.Order2" Multiplicity="*" />
+        <Association Name="FK_Order3_User3">
+          <End Role="User3" Type="Self.User3" Multiplicity="0..1" />
+          <End Role="Order3" Type="Self.Order3" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User2">
+            <Principal Role="User3">
               <PropertyRef Name="ID_User" />
             </Principal>
-            <Dependent Role="Order2">
+            <Dependent Role="Order3">
               <PropertyRef Name="ID_User" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_User2_Role2">
-          <End Role="Role2" Type="Self.Role2" Multiplicity="0..1" />
-          <End Role="User2" Type="Self.User2" Multiplicity="*" />
+        <Association Name="FK_User3_Role3">
+          <End Role="Role3" Type="Self.Role3" Multiplicity="0..1" />
+          <End Role="User3" Type="Self.User3" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Role2">
+            <Principal Role="Role3">
               <PropertyRef Name="UserRole" />
             </Principal>
-            <Dependent Role="User2">
+            <Dependent Role="User3">
               <PropertyRef Name="UserRole" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="user33Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Address2" EntityType="Self.Address2" />
-          <EntitySet Name="Order2" EntityType="Self.Order2" />
-          <EntitySet Name="Product2" EntityType="Self.Product2" />
-          <EntitySet Name="Role2" EntityType="Self.Role2" />
-          <EntitySet Name="User2" EntityType="Self.User2" />
-          <AssociationSet Name="FK_Order2_Address2" Association="Self.FK_Order2_Address2">
-            <End Role="Address2" EntitySet="Address2" />
-            <End Role="Order2" EntitySet="Order2" />
+          <EntitySet Name="Address3" EntityType="Self.Address3" />
+          <EntitySet Name="Order3" EntityType="Self.Order3" />
+          <EntitySet Name="Product3" EntityType="Self.Product3" />
+          <EntitySet Name="Role3" EntityType="Self.Role3" />
+          <EntitySet Name="User3" EntityType="Self.User3" />
+          <AssociationSet Name="FK_Order3_Address3" Association="Self.FK_Order3_Address3">
+            <End Role="Address3" EntitySet="Address3" />
+            <End Role="Order3" EntitySet="Order3" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order2_Product2" Association="Self.FK_Order2_Product2">
-            <End Role="Product2" EntitySet="Product2" />
-            <End Role="Order2" EntitySet="Order2" />
+          <AssociationSet Name="FK_Order3_Product3" Association="Self.FK_Order3_Product3">
+            <End Role="Product3" EntitySet="Product3" />
+            <End Role="Order3" EntitySet="Order3" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order2_User2" Association="Self.FK_Order2_User2">
-            <End Role="User2" EntitySet="User2" />
-            <End Role="Order2" EntitySet="Order2" />
+          <AssociationSet Name="FK_Order3_User3" Association="Self.FK_Order3_User3">
+            <End Role="User3" EntitySet="User3" />
+            <End Role="Order3" EntitySet="Order3" />
           </AssociationSet>
-          <AssociationSet Name="FK_User2_Role2" Association="Self.FK_User2_Role2">
-            <End Role="Role2" EntitySet="Role2" />
-            <End Role="User2" EntitySet="User2" />
+          <AssociationSet Name="FK_User3_Role3" Association="Self.FK_User3_Role3">
+            <End Role="Role3" EntitySet="Role3" />
+            <End Role="User3" EntitySet="User3" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -282,9 +282,9 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище user33ModelContainer" CdmEntityContainer="user33Entities">
-          <EntitySetMapping Name="Address2">
-            <EntityTypeMapping TypeName="user33Model.Address2">
-              <MappingFragment StoreEntitySet="Address2">
+          <EntitySetMapping Name="Address3">
+            <EntityTypeMapping TypeName="user33Model.Address3">
+              <MappingFragment StoreEntitySet="Address3">
                 <ScalarProperty Name="ID_Address" ColumnName="ID_Address" />
                 <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
                 <ScalarProperty Name="City" ColumnName="City" />
@@ -293,9 +293,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Order2">
-            <EntityTypeMapping TypeName="user33Model.Order2">
-              <MappingFragment StoreEntitySet="Order2">
+          <EntitySetMapping Name="Order3">
+            <EntityTypeMapping TypeName="user33Model.Order3">
+              <MappingFragment StoreEntitySet="Order3">
                 <ScalarProperty Name="ID_Order" ColumnName="ID_Order" />
                 <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
                 <ScalarProperty Name="ID_Product" ColumnName="ID_Product" />
@@ -309,9 +309,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Product2">
-            <EntityTypeMapping TypeName="user33Model.Product2">
-              <MappingFragment StoreEntitySet="Product2">
+          <EntitySetMapping Name="Product3">
+            <EntityTypeMapping TypeName="user33Model.Product3">
+              <MappingFragment StoreEntitySet="Product3">
                 <ScalarProperty Name="ID_Product" ColumnName="ID_Product" />
                 <ScalarProperty Name="Article" ColumnName="Article" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -327,16 +327,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Role2">
-            <EntityTypeMapping TypeName="user33Model.Role2">
-              <MappingFragment StoreEntitySet="Role2">
+          <EntitySetMapping Name="Role3">
+            <EntityTypeMapping TypeName="user33Model.Role3">
+              <MappingFragment StoreEntitySet="Role3">
                 <ScalarProperty Name="UserRole" ColumnName="UserRole" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="User2">
-            <EntityTypeMapping TypeName="user33Model.User2">
-              <MappingFragment StoreEntitySet="User2">
+          <EntitySetMapping Name="User3">
+            <EntityTypeMapping TypeName="user33Model.User3">
+              <MappingFragment StoreEntitySet="User3">
                 <ScalarProperty Name="ID_User" ColumnName="ID_User" />
                 <ScalarProperty Name="UserRole" ColumnName="UserRole" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />

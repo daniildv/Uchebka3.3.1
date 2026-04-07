@@ -12,22 +12,21 @@ namespace DE
     using System;
     using System.Collections.Generic;
     
-    public partial class User2
+    public partial class Address3
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User2()
+        public Address3()
         {
-            this.Order2 = new HashSet<Order2>();
+            this.Order3 = new HashSet<Order3>();
         }
     
-        public int ID_User { get; set; }
-        public string UserRole { get; set; }
-        public string FullName { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
+        public int ID_Address { get; set; }
+        public string PostalCode { get; set; }
+        public string City { get; set; }
+        public string Street { get; set; }
+        public int House { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order2> Order2 { get; set; }
-        public virtual Role2 Role2 { get; set; }
+        public virtual ICollection<Order3> Order3 { get; set; }
     }
 }

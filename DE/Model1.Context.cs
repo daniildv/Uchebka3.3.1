@@ -25,10 +25,10 @@ namespace DE
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Address2> Address2 { get; set; }
-        public virtual DbSet<Order2> Order2 { get; set; }
-        public virtual DbSet<Product2> Product2 { get; set; }
-        public virtual DbSet<Role2> Role2 { get; set; }
-        public virtual DbSet<User2> User2 { get; set; }
+        public virtual DbSet<Address3> Address3 { get; set; }
+        public virtual DbSet<Order3> Order3 { get; set; }
+        public virtual DbSet<Product3> Product3 { get; set; }
+        public virtual DbSet<Role3> Role3 { get; set; }
+        public virtual DbSet<User3> User3 { get; set; }
     }
 }

@@ -18,7 +18,7 @@ namespace DE
 {
     public partial class MainWindow : Window
     {
-        private User2 currentUser;
+        private User3 currentUser;
         private Stack<Page> navigationHistory = new Stack<Page>();
 
         public event NavigatedEventHandler Navigated;
@@ -28,7 +28,7 @@ namespace DE
             InitializeComponent();
         }
 
-        public MainWindow(User2 user)
+        public MainWindow(User3 user)
         {
             InitializeComponent();
             try
@@ -274,6 +274,6 @@ namespace DE
             }
         }
 
-        public User2 CurrentUser => currentUser;
+        public User3 CurrentUser => currentUser;
     }
 }

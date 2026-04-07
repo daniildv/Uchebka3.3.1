@@ -18,7 +18,7 @@ namespace DE.Pages
 {
     public partial class OrdersPage : Page
     {
-        private List<Order2> allOrders;
+        private List<Order3> allOrders;
         private string currentSearch = "";
         private string currentStatusFilter = "Все статусы";
         private string currentSort = "none";
@@ -61,7 +61,7 @@ namespace DE.Pages
                 using (var db = new user33Entities())
                 {
                    
-                    allOrders = db.Order2
+                    allOrders = db.Order3
                         .Include("Address2")  
                         .ToList();
 
@@ -169,7 +169,7 @@ namespace DE.Pages
                 if (!IsAdmin) return;
 
                 var button = sender as Button;
-                var order = button?.CommandParameter as Order2;
+                var order = button?.CommandParameter as Order3;
 
                 if (order != null)
                 {
@@ -188,7 +188,7 @@ namespace DE.Pages
             if (!IsAdmin) return;
 
             var btn = sender as Button;
-            var order = btn?.CommandParameter as Order2;
+            var order = btn?.CommandParameter as Order3;
 
             if (order == null) return;
 
@@ -199,10 +199,10 @@ namespace DE.Pages
             {
                 using (var db = new user33Entities())
                 {
-                    var del = db.Order2.Find(order.ID_Order);
+                    var del = db.Order3.Find(order.ID_Order);
                     if (del != null)
                     {
-                        db.Order2.Remove(del);
+                        db.Order3.Remove(del);
                         db.SaveChanges();
                     }
                 }

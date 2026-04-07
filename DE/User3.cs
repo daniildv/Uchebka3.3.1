@@ -12,50 +12,22 @@ namespace DE
     using System;
     using System.Collections.Generic;
     
-    public partial class Address2
+    public partial class User3
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Address2()
+        public User3()
         {
-            this.Order2 = new HashSet<Order2>();
+            this.Order3 = new HashSet<Order3>();
         }
     
-        public int ID_Address { get; set; }
-        public string PostalCode { get; set; }
-        public string City { get; set; }
-        public string Street { get; set; }
-        public int House { get; set; }
+        public int ID_User { get; set; }
+        public string UserRole { get; set; }
+        public string FullName { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order2> Order2 { get; set; }
-
-        public string FullAddress
-        {
-            get
-            {
-                return $"{PostalCode}, {City}, ул. {Street}, дом. {House}";
-            }
-        }
-
-        public string ShortAddress
-        {
-            get
-            {
-                return $"{City}, ул. {Street}, дом. {House}";
-            }
-        }
-
-        public string AddressLine
-        {
-            get
-            {
-                return $"{City} {Street} {House}";
-            }
-        }
-
-        public override string ToString()
-        {
-            return FullAddress;
-        }
+        public virtual ICollection<Order3> Order3 { get; set; }
+        public virtual Role3 Role3 { get; set; }
     }
 }

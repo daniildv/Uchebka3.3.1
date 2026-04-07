@@ -12,21 +12,17 @@ namespace DE
     using System;
     using System.Collections.Generic;
     
-    public partial class Order2
+    public partial class Role3
     {
-        public int ID_Order { get; set; }
-        public int OrderNumber { get; set; }
-        public int ID_Product { get; set; }
-        public int Quantity { get; set; }
-        public System.DateTime OrderDate { get; set; }
-        public System.DateTime DeliveryDate { get; set; }
-        public int ID_Address { get; set; }
-        public Nullable<int> ID_User { get; set; }
-        public int RecipientCode { get; set; }
-        public string Status { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Role3()
+        {
+            this.User3 = new HashSet<User3>();
+        }
     
-        public virtual Address2 Address2 { get; set; }
-        public virtual Product2 Product2 { get; set; }
-        public virtual User2 User2 { get; set; }
+        public string UserRole { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User3> User3 { get; set; }
     }
 }

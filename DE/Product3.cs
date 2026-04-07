@@ -12,17 +12,28 @@ namespace DE
     using System;
     using System.Collections.Generic;
     
-    public partial class Role2
+    public partial class Product3
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Role2()
+        public Product3()
         {
-            this.User2 = new HashSet<User2>();
+            this.Order3 = new HashSet<Order3>();
         }
     
-        public string UserRole { get; set; }
+        public int ID_Product { get; set; }
+        public string Article { get; set; }
+        public string Name { get; set; }
+        public string Unit { get; set; }
+        public decimal Price { get; set; }
+        public string Supplier { get; set; }
+        public string Manufacturer { get; set; }
+        public string Category { get; set; }
+        public int Discount { get; set; }
+        public int Quantity { get; set; }
+        public string Description { get; set; }
+        public string Photo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User2> User2 { get; set; }
+        public virtual ICollection<Order3> Order3 { get; set; }
     }
 }

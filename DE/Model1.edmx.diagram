@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9b8e6e46f05a49199ade101b289afee9" Name="Diagram1">
-        <EntityTypeShape EntityType="user33Model.Address2" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="user33Model.Order2" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="user33Model.Product2" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="user33Model.Role2" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="user33Model.User2" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
-        <AssociationConnector Association="user33Model.FK_Order2_Address2" ManuallyRouted="false" />
-        <AssociationConnector Association="user33Model.FK_Order2_Product2" ManuallyRouted="false" />
-        <AssociationConnector Association="user33Model.FK_Order2_User2" ManuallyRouted="false" />
-        <AssociationConnector Association="user33Model.FK_User2_Role2" ManuallyRouted="false" />
+      <Diagram DiagramId="8e884239288140278820e3fd28171849" Name="Diagram1">
+        <EntityTypeShape EntityType="user33Model.Address3" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="user33Model.Order3" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="user33Model.Product3" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="user33Model.Role3" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="user33Model.User3" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <AssociationConnector Association="user33Model.FK_Order3_Address3" ManuallyRouted="false" />
+        <AssociationConnector Association="user33Model.FK_Order3_Product3" ManuallyRouted="false" />
+        <AssociationConnector Association="user33Model.FK_Order3_User3" ManuallyRouted="false" />
+        <AssociationConnector Association="user33Model.FK_User3_Role3" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -16,7 +16,7 @@ namespace DE
 {
     public partial class LoginWIndow : Window
     {
-        private user33Entities db = new user33Entities();
+        private  user33Entities db = new user33Entities();
         public LoginWIndow()
         {
             InitializeComponent();
@@ -46,7 +46,7 @@ namespace DE
                 // поиск пользователя в БД
                 using (var db = new user33Entities())
                 {
-                    var user = db.User2
+                    var user = db.User3
                         .FirstOrDefault(u => u.Login == login && u.Password == password);
 
                     if (user == null)
