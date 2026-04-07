@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище user33Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Address2">
+          <Key>
+            <PropertyRef Name="ID_Address" />
+          </Key>
+          <Property Name="ID_Address" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Street" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="House" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order2">
+          <Key>
+            <PropertyRef Name="ID_Order" />
+          </Key>
+          <Property Name="ID_Order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderNumber" Type="int" Nullable="false" />
+          <Property Name="ID_Product" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="OrderDate" Type="date" Nullable="false" />
+          <Property Name="DeliveryDate" Type="date" Nullable="false" />
+          <Property Name="ID_Address" Type="int" Nullable="false" />
+          <Property Name="ID_User" Type="int" />
+          <Property Name="RecipientCode" Type="int" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product2">
+          <Key>
+            <PropertyRef Name="ID_Product" />
+          </Key>
+          <Property Name="ID_Product" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Article" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Supplier" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Manufacturer" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Discount" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Role2">
+          <Key>
+            <PropertyRef Name="UserRole" />
+          </Key>
+          <Property Name="UserRole" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User2">
+          <Key>
+            <PropertyRef Name="ID_User" />
+          </Key>
+          <Property Name="ID_User" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserRole" Type="nvarchar" MaxLength="100" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Order2_Address2">
+          <End Role="Address2" Type="Self.Address2" Multiplicity="1" />
+          <End Role="Order2" Type="Self.Order2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address2">
+              <PropertyRef Name="ID_Address" />
+            </Principal>
+            <Dependent Role="Order2">
+              <PropertyRef Name="ID_Address" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order2_Product2">
+          <End Role="Product2" Type="Self.Product2" Multiplicity="1" />
+          <End Role="Order2" Type="Self.Order2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product2">
+              <PropertyRef Name="ID_Product" />
+            </Principal>
+            <Dependent Role="Order2">
+              <PropertyRef Name="ID_Product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order2_User2">
+          <End Role="User2" Type="Self.User2" Multiplicity="0..1" />
+          <End Role="Order2" Type="Self.Order2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User2">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Order2">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User2_Role2">
+          <End Role="Role2" Type="Self.Role2" Multiplicity="0..1" />
+          <End Role="User2" Type="Self.User2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role2">
+              <PropertyRef Name="UserRole" />
+            </Principal>
+            <Dependent Role="User2">
+              <PropertyRef Name="UserRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище user33ModelContainer">
+          <EntitySet Name="Address2" EntityType="Self.Address2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order2" EntityType="Self.Order2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product2" EntityType="Self.Product2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role2" EntityType="Self.Role2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User2" EntityType="Self.User2" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Order2_Address2" Association="Self.FK_Order2_Address2">
+            <End Role="Address2" EntitySet="Address2" />
+            <End Role="Order2" EntitySet="Order2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order2_Product2" Association="Self.FK_Order2_Product2">
+            <End Role="Product2" EntitySet="Product2" />
+            <End Role="Order2" EntitySet="Order2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order2_User2" Association="Self.FK_Order2_User2">
+            <End Role="User2" EntitySet="User2" />
+            <End Role="Order2" EntitySet="Order2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User2_Role2" Association="Self.FK_User2_Role2">
+            <End Role="Role2" EntitySet="Role2" />
+            <End Role="User2" EntitySet="User2" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="user33Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Address2">
+          <Key>
+            <PropertyRef Name="ID_Address" />
+          </Key>
+          <Property Name="ID_Address" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PostalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Street" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="House" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Order2" Relationship="Self.FK_Order2_Address2" FromRole="Address2" ToRole="Order2" />
+        </EntityType>
+        <EntityType Name="Order2">
+          <Key>
+            <PropertyRef Name="ID_Order" />
+          </Key>
+          <Property Name="ID_Order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderNumber" Type="Int32" Nullable="false" />
+          <Property Name="ID_Product" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DeliveryDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ID_Address" Type="Int32" Nullable="false" />
+          <Property Name="ID_User" Type="Int32" />
+          <Property Name="RecipientCode" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Address2" Relationship="Self.FK_Order2_Address2" FromRole="Order2" ToRole="Address2" />
+          <NavigationProperty Name="Product2" Relationship="Self.FK_Order2_Product2" FromRole="Order2" ToRole="Product2" />
+          <NavigationProperty Name="User2" Relationship="Self.FK_Order2_User2" FromRole="Order2" ToRole="User2" />
+        </EntityType>
+        <EntityType Name="Product2">
+          <Key>
+            <PropertyRef Name="ID_Product" />
+          </Key>
+          <Property Name="ID_Product" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Article" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Supplier" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Manufacturer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Discount" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Order2" Relationship="Self.FK_Order2_Product2" FromRole="Product2" ToRole="Order2" />
+        </EntityType>
+        <EntityType Name="Role2">
+          <Key>
+            <PropertyRef Name="UserRole" />
+          </Key>
+          <Property Name="UserRole" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User2" Relationship="Self.FK_User2_Role2" FromRole="Role2" ToRole="User2" />
+        </EntityType>
+        <EntityType Name="User2">
+          <Key>
+            <PropertyRef Name="ID_User" />
+          </Key>
+          <Property Name="ID_User" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserRole" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Order2" Relationship="Self.FK_Order2_User2" FromRole="User2" ToRole="Order2" />
+          <NavigationProperty Name="Role2" Relationship="Self.FK_User2_Role2" FromRole="User2" ToRole="Role2" />
+        </EntityType>
+        <Association Name="FK_Order2_Address2">
+          <End Role="Address2" Type="Self.Address2" Multiplicity="1" />
+          <End Role="Order2" Type="Self.Order2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address2">
+              <PropertyRef Name="ID_Address" />
+            </Principal>
+            <Dependent Role="Order2">
+              <PropertyRef Name="ID_Address" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order2_Product2">
+          <End Role="Product2" Type="Self.Product2" Multiplicity="1" />
+          <End Role="Order2" Type="Self.Order2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product2">
+              <PropertyRef Name="ID_Product" />
+            </Principal>
+            <Dependent Role="Order2">
+              <PropertyRef Name="ID_Product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order2_User2">
+          <End Role="User2" Type="Self.User2" Multiplicity="0..1" />
+          <End Role="Order2" Type="Self.Order2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User2">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Order2">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User2_Role2">
+          <End Role="Role2" Type="Self.Role2" Multiplicity="0..1" />
+          <End Role="User2" Type="Self.User2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role2">
+              <PropertyRef Name="UserRole" />
+            </Principal>
+            <Dependent Role="User2">
+              <PropertyRef Name="UserRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="user33Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Address2" EntityType="Self.Address2" />
+          <EntitySet Name="Order2" EntityType="Self.Order2" />
+          <EntitySet Name="Product2" EntityType="Self.Product2" />
+          <EntitySet Name="Role2" EntityType="Self.Role2" />
+          <EntitySet Name="User2" EntityType="Self.User2" />
+          <AssociationSet Name="FK_Order2_Address2" Association="Self.FK_Order2_Address2">
+            <End Role="Address2" EntitySet="Address2" />
+            <End Role="Order2" EntitySet="Order2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order2_Product2" Association="Self.FK_Order2_Product2">
+            <End Role="Product2" EntitySet="Product2" />
+            <End Role="Order2" EntitySet="Order2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order2_User2" Association="Self.FK_Order2_User2">
+            <End Role="User2" EntitySet="User2" />
+            <End Role="Order2" EntitySet="Order2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User2_Role2" Association="Self.FK_User2_Role2">
+            <End Role="Role2" EntitySet="Role2" />
+            <End Role="User2" EntitySet="User2" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище user33ModelContainer" CdmEntityContainer="user33Entities">
+          <EntitySetMapping Name="Address2">
+            <EntityTypeMapping TypeName="user33Model.Address2">
+              <MappingFragment StoreEntitySet="Address2">
+                <ScalarProperty Name="ID_Address" ColumnName="ID_Address" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="House" ColumnName="House" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order2">
+            <EntityTypeMapping TypeName="user33Model.Order2">
+              <MappingFragment StoreEntitySet="Order2">
+                <ScalarProperty Name="ID_Order" ColumnName="ID_Order" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="ID_Product" ColumnName="ID_Product" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="ID_Address" ColumnName="ID_Address" />
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+                <ScalarProperty Name="RecipientCode" ColumnName="RecipientCode" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product2">
+            <EntityTypeMapping TypeName="user33Model.Product2">
+              <MappingFragment StoreEntitySet="Product2">
+                <ScalarProperty Name="ID_Product" ColumnName="ID_Product" />
+                <ScalarProperty Name="Article" ColumnName="Article" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role2">
+            <EntityTypeMapping TypeName="user33Model.Role2">
+              <MappingFragment StoreEntitySet="Role2">
+                <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User2">
+            <EntityTypeMapping TypeName="user33Model.User2">
+              <MappingFragment StoreEntitySet="User2">
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+                <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
