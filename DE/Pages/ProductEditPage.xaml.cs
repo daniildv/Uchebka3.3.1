@@ -18,10 +18,10 @@ namespace DE.Pages
         private static bool isEditWindowOpen = false;
         private ImageConverter imageConverter = new ImageConverter();
 
-        //отслеживание триггера для скидки
+        //триггер для скидки
         private bool discountTriggerActivated = false;
 
-        //отслеживание триггера нулевого количества
+        //триггер нулевого количества
         private bool zeroQuantityTriggerActivated = false;
 
         public ProductEditPage() : this(null) { }
@@ -80,7 +80,7 @@ namespace DE.Pages
             this.Unloaded -= Page_Unloaded;
         }
 
-        //логика автоматического ID в строке
+        //логика для автоматического заполнения ID в строке
         private void GenerateNextId()
         {
             try
@@ -342,13 +342,10 @@ namespace DE.Pages
                         }
                     }
 
-                    // Копируем файл
                     File.Copy(openFileDialog.FileName, savePath);
 
-                    // Обновляем путь к фото
                     currentPhotoFullPath = originalFileName;
 
-                    // Обновляем изображение на форме
                     ProductImage.Source = imageConverter.Convert(currentPhotoFullPath, typeof(ImageSource), null, null) as ImageSource;
 
                     // Удаляем старое фото, если оно существует и не является заглушкой
@@ -356,7 +353,6 @@ namespace DE.Pages
                         !currentPhotoFullPath.Contains("picture.png") &&
                         File.Exists(savePath))
                     {
-                        // Здесь можно добавить логику удаления старого файла если нужно
                     }
                 }
             }
@@ -496,12 +492,12 @@ namespace DE.Pages
                     // пустой триггер для нулевого количества 
                     if (quantity == 0)
                     {
-                        // проверка на активирован триггер
+                        // проверка на активировацию триггера
                         if (!zeroQuantityTriggerActivated)
                         {
                             System.Diagnostics.Debug.WriteLine($"[ТРИГГЕР] Количество товара равно 0");
 
-                            // установка флага активного триггера
+                            // установка флага для активного триггера
                             zeroQuantityTriggerActivated = true;
                         }
                     }

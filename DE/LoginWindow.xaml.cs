@@ -21,6 +21,7 @@ namespace DE
         {
             InitializeComponent();
         }
+        //Проверка данных для входа в приложения
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             try

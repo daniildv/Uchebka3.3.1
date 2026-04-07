@@ -115,7 +115,7 @@ namespace DE.Pages
             OrdersList.ItemsSource = filtered.ToList();
         }
 
-        //поиск
+        //поле поиска
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             currentSearch = SearchTextBox.Text;

@@ -65,7 +65,7 @@ namespace DE.Pages
             {
                 if (value is User3 user && user != null)
                 {
-                    // Показываем только для администратора и менеджера
+                    // Показываем окно только для администратора и менеджера
                     return (user.UserRole == "Администратор" || user.UserRole == "Менеджер")
                         ? Visibility.Visible
                         : Visibility.Collapsed;

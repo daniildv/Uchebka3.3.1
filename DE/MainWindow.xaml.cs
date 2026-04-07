@@ -27,7 +27,7 @@ namespace DE
         {
             InitializeComponent();
         }
-
+        //Сверка данных для авторизации с базой данных
         public MainWindow(User3 user)
         {
             InitializeComponent();
@@ -55,7 +55,7 @@ namespace DE
             }
         }
 
-
+        //Проверка роли при авторизации
         private void UpdateNavigationButtons()
         {
             ProductsNavButton.Visibility = Visibility.Visible;
