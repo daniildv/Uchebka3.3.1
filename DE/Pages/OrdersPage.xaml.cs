@@ -62,7 +62,7 @@ namespace DE.Pages
                 {
                    
                     allOrders = db.Order3
-                        .Include("Address2")  
+                        .Include("Address3")  
                         .ToList();
 
                     Debug.WriteLine($"Загружено заказов: {allOrders.Count}");
